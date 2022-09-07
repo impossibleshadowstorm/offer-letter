@@ -22,7 +22,25 @@ body {
     border-bottom: 5px solid #3c67b0;
 }
 
+.company {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 40%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
 .company-name {
+    width: 60%;
+    text-align: end;
     padding: 20px 20px 0px 20px;
     font-size: 22px;
     font-weight: bold;
@@ -30,7 +48,7 @@ body {
 }
 
 .address {
-    padding: 10px 20px 20px 20px;
+    padding: 0 20px 20px 20px;
 }
 
 .street-city,
@@ -53,7 +71,6 @@ body {
 
 .date {
     width: 100%;
-    background-color: red;
     padding: 10px 20px 0 20px;
     font-weight: bold;
     text-align: end;
@@ -86,7 +103,6 @@ body {
 
 .offer-body .address {
     padding: 0;
-    background-color: red;
 }
 
 .greetings {
@@ -99,6 +115,10 @@ body {
 
 .terms-n-conditions {
     padding: 20px 0;
+}
+
+.terms-n-conditions span{
+    font-weight: bold;
 }
 
 li {
@@ -122,4 +142,15 @@ li {
 
 .inner-list {
     font-weight: normal;
+}
+
+
+.heading{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.annexure{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
