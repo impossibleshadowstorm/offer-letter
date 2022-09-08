@@ -2,46 +2,39 @@
 
 <header class="header">
   <div class="company">
-    
     <div class="logo">
-      <img
-        src="/static/offerletter/img/ms-logo.svg"
-        width="200px"
-        height="100px"
-        alt=""
-      />
+      <img src="{{company_logo}}" width="200px" height="100px" alt="" />
     </div>
-    <div class="company-name">Microsoft Corporation</div>
+    <div class="company-name">{{company_name}}</div>
   </div>
   <div class="address">
-    <div class="street-city">1 Orchard Rd, Armonk</div>
-    <div class="state-pin">New York, 10504</div>
-    <div class="country">United States Of America</div>
+    <div class="street-city">{{address.street_city}}</div>
+    <div class="state-pin">{{address.state_pin}}</div>
+    <div class="country">{{address.country}}</div>
   </div>
 </header>
 
-{% comment %}  {% endcomment %}
-
+{% comment %} {% endcomment %}
 
 <div class="heading">Job Offer Letter</div>
-<div class="date">-- 12th August, 2022</div>
+<div class="date">-- {{offer_date}}</div>
 <div class="space"></div>
 
 <div class="offer-body">
-  <div class="candidate-name">Mr. Sumit Saurav,</div>
+  <div class="candidate-name">{{candidate_name}},</div>
   <div class="address">
-    <div class="street-city">1 Orchard Rd, Armonk</div>
-    <div class="state-pin">New York, 10504</div>
-    <div class="country">United States Of America</div>
+    <div class="street-city">{{candidate_address.street_city}}</div>
+    <div class="state-pin">{{candidate_address.state_pin}}</div>
+    <div class="country">{{candidate_address.country}}</div>
   </div>
 
-  <div class="greetings">Dear Sumit:</div>
+  <div class="greetings">Dear {{candidate_name}}:</div>
 
   <div class="starter-line">
-    <span>Microsoft Corporation</span> is pleased to confirm our offer to
-    appoint you as a <span>Senior Software Developer</span>, reporting to
-    <span>Chris Liddell</span>. We anticipate that you will start your
-    employment on <span>May 1, 2006</span>.
+    <span>{{company_name}}</span> is pleased to confirm our offer to appoint you
+    as a <span>{{job_profile}}</span>, reporting to
+    <span>{{reporting_manager}}</span>. We anticipate that you will start your
+    employment on <span>{{joining_date}}</span>.
   </div>
 
   <div class="terms-n-conditions">
@@ -51,16 +44,16 @@
       <li>
         <div class="tnc-heading">Location / Place Of Posting</div>
         <div class="tnc-description">
-          Your work location will be Armonk. However based on organizational and
-          business exigencies imperatives, you be transferred to location
-          anywhere in India or abroad.
+          Your work location will be <span>{{job_location}}</span>. However
+          based on organizational and business exigencies imperatives, you be
+          transferred to location anywhere in India or abroad.
         </div>
       </li>
       <!-- Designation -->
       <li>
         <div class="tnc-heading">Designation</div>
         <div class="tnc-description">
-          You will be designated as Manager Logistics - Import / Export.
+          You will be designated as <span>{{job_profile}}.</span>
         </div>
       </li>
       <!-- Total Compensation -->
@@ -91,8 +84,8 @@
         <div class="tnc-heading">Probation and Confirmation</div>
         <div class="tnc-description">
           You will be on probation for a period of
-          <span>six [06] months</span> from the start date of appointment
-          <span>[May 1, 2006]</span>.
+          <span>{{probation_period}}</span> from the start date of appointment
+          <span>[{{joining_date}}]</span>.
           <div class="break"></div>
           At the end of this period, your service will be confirmed subject to
           your satisfactory conduct and performance. Your probationary period
@@ -340,6 +333,40 @@
 
     <div class="annexure">
       <div class="heading">ANNEXURE I</div>
+    </div>
+    <div class="table-container">
+      <table class="table">
+        <tr>
+          <th class="table__heading">Salary Component</th>
+          <th class="table__heading">Percentage</th>
+          <th class="table__heading">Amount</th>
+        </tr>
+        {% for key, value in salary.items %} {% with total as {{value.amount|add:value.amount}} %}
+        <tr class="table__row">
+          {% for k, v in value.items %} {% if v not in value.items %}
+          <td class="table__content" data-heading="Salary Component">
+            {{total}}
+          </td>
+          {% else %}
+          <td class="table__content" data-heading="Salary Component">{{v}}</td>
+
+          {% endif %} {% endfor %}
+        </tr>
+        {% endwith %} {% endfor %} {% comment %}
+        <tr class="table__row">
+          <td class="table__content" data-heading="Salary Component">
+            Basic Salary
+          </td>
+          <td class="table__content" data-heading="Percentage">Nil</td>
+          <td class="table__content" data-heading="Amount">13,750</td>
+        </tr>
+        <tr class="table__row total_row">
+          <td class="table__content" data-heading="Salary Component">Total</td>
+          <td class="table__content" data-heading="Percentage">Nil</td>
+          <td class="table__content" data-heading="Amount">13,750</td>
+        </tr>
+        {% endcomment %}
+      </table>
     </div>
   </div>
 </div>
